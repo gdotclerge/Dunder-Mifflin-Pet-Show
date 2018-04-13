@@ -1,0 +1,26 @@
+  <% if flash[:errors] %>
+  <h2><%= pluralize(flash[:errors].count, "Error") %></h2>
+  <ul>
+    <% flash[:errors].each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+<%= form_for @dog do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :breed %>
+  <%= f.text_field :breed %><br>
+
+  <%= f.label :age %>
+  <%= f.text_field :age %><br>
+
+  <%= f.label :employee %>
+  <%= f.collection_check_boxes :employee_ids, @employees, :id, :full_name %>
+
+  <%= f.submit %>
+
+<% end %>
